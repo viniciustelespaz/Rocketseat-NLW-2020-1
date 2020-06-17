@@ -10,12 +10,12 @@
 }
 
 html {
-    font-family: 'Roboto', sans-serif;
+    font-family: Roboto, sans-serif;
 }
 
 body {
     background: #f0f0f5;
-    -webkit-font-smoothing:antialiased;
+    -webkit-font-smoothing: antialiased;
 }
 
 a {
@@ -24,7 +24,7 @@ a {
 
 h1, h2, h3, h4, h5, h6 {
     color: var(--title-color);
-    font-family: 'Ubuntu', sans-serif;
+    font-family: Ubuntu, sans-serif;
 }
 
 /* BOX MODEL 
