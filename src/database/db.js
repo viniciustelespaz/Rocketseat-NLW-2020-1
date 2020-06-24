@@ -10,7 +10,7 @@ module.exports = db
  db.serialize(() => {
 
     // dropa a tabela
-    db.run('DROP TABLE places')
+    //db.run('DROP TABLE places')
 
     // criar uma tabela
     db.run(`
