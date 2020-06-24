@@ -124,15 +124,19 @@
 
     </form>
 
-
-    
-
 {% endblock content %}
 
 {% block modal %}
-    {% if saved %}
+    {% if saved == 1 %}
         {%include "partials/point-created.html"%}
     {% endif %}
+
+    {% if saved == 0 %}
+        {%include "partials/point-not-created.html"%}
+    {% endif %}
+
+
+
 {% endblock modal %}   
 
 {% block scripts %}

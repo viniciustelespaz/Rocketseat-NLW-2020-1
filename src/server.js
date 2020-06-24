@@ -34,7 +34,7 @@ server.get("/create-point", (req,res)  => {
     //req.query strings da nossa url
     //console.log(req.query)
 
-    return res.render("create-point.html")
+    return res.render("create-point.html", {saved:2})
 })
 
 server.post("/savepoint", (req,res) => {
@@ -68,13 +68,14 @@ server.post("/savepoint", (req,res) => {
     function afterInsertData(err) {
         if(err) {
             console.log(err)
-            return res.send("Erro no cadastro")
+            return res.render("create-point.html", {saved:0})
+            //return res.send("Erro no cadastro")
         }
 
         console.log("Cadastrado com sucesso")
         console.log(this)
 
-        return res.render("create-point.html", {saved:true})
+        return res.render("create-point.html", {saved:1})
     }
 
     db.run(query, values, afterInsertData)    
@@ -89,12 +90,17 @@ server.get("/search", (req,res)  => {
 
     if(search == "") {
         //pesquisa vazia
-        return res.render("search-results.html", {total: 0})        
+        //return res.render("search-results.html", {total: 0})        
+        var sql = ''
 
+        sql = `SELECT * FROM places`
     }
-
+    else {
+        sql = `SELECT * FROM places WHERE city LIKE '%${search}%'`
+    }
     // pegar os dados do banco de dados
-    db.all(`SELECT * FROM places WHERE city LIKE '%${search}%'`, function(err, rows) {
+
+    db.all(sql, function(err, rows) {
         if(err) {
             return console.log(err)
         }
