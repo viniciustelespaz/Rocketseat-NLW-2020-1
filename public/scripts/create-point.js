@@ -14,8 +14,8 @@ function populateUFs() {
 populateUFs()
 
 function getCities(event) {
-    const citySelect = document.querySelector("select[name=city")
-    const stateInput = document.querySelector("[name=state")
+    const citySelect = document.querySelector("select[name=city]")
+    const stateInput = document.querySelector("[name=state]")
 
     const ufValue = event.target.value
 
@@ -41,7 +41,7 @@ function getCities(event) {
 }
 
 document
-    .querySelector("select[name=uf")
+    .querySelector("select[name=uf]")
     .addEventListener("change", getCities)
 
 
@@ -66,6 +66,8 @@ function handleSelectedItem(event) {
     
     const itemId = itemLi.dataset.id
 
+    //console.log("ITEM: ", itemId)
+
     // verificar se existem itens selecionados, se sim
     // pegar os itens selecionados
     const alreadySelected = selectedItems.findIndex(item => {
@@ -76,16 +78,18 @@ function handleSelectedItem(event) {
     // se já estiver selecionado, tirar da seleção
     if(alreadySelected >= 0) {
         // tirar da seleção
-        const filterdItems = selectedItems.filter( item => {
+        const filteredItems = selectedItems.filter( item => {
             const itemIsDifferent = item != itemId //false
-            return false
+            return itemIsDifferent
         })
 
-        selectItems = filterdItems 
-    } else{ // se não estiver selecionado, adicionar à seleção
-        selectedItems.push(ItemId)
+        selectedItems = filteredItems 
+    } else { // se não estiver selecionado, adicionar à seleção
+        
+        selectedItems.push(itemId)
     }
 
+   // console.log('selectedItems')
     // atualizar o campo escondido com os itens selecionados
     collectedItems.value = selectedItems
 

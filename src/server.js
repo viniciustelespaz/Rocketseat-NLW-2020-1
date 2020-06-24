@@ -87,12 +87,12 @@ server.post("/savepoint", (req,res) => {
 server.get("/search", (req,res)  => { 
 
     const search = req.query.search
+    var sql = ''
 
     if(search == "") {
         //pesquisa vazia
         //return res.render("search-results.html", {total: 0})        
-        var sql = ''
-
+        
         sql = `SELECT * FROM places`
     }
     else {

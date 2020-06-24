@@ -10,7 +10,7 @@ module.exports = db
  db.serialize(() => {
 
     // dropa a tabela
-    //db.run('DROP TABLE places')
+    db.run('DROP TABLE places')
 
     // criar uma tabela
     db.run(`
@@ -62,7 +62,7 @@ module.exports = db
 
 
     // consultar os dados da tabela
-    db.all(`SELECT name FROM places`, function(err, rows) {
+    db.all(`SELECT * FROM places`, function(err, rows) {
         if(err) {
             return console.log(err)
         }
